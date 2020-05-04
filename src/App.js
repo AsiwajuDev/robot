@@ -1,16 +1,25 @@
-import React from "react";
+import React, { Component } from "react";
 
 import CardList from "./components/cardList/CardList";
+import SearchBox from "./components/searchBox/SearchBox";
+
 import { robots } from "./data/robot";
 
-import "./App.css";
+const state = {
+  robots: robots,
+  searchField: "",
+};
 
-function App() {
-  return (
-    <div className="App">
-      <CardList robots={robots} />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="tc">
+        <h2>RoboFriends</h2>
+        <SearchBox />
+        <CardList robots={robots} />
+      </div>
+    );
+  }
 }
 
 export default App;
