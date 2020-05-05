@@ -5,6 +5,8 @@ import SearchBox from "./components/searchBox/SearchBox";
 
 import { robots } from "./data/robot";
 
+import "./App.css";
+
 class App extends Component {
   constructor() {
     super();
@@ -24,7 +26,7 @@ class App extends Component {
 
     return (
       <div className="tc">
-        <h2>RoboFriends</h2>
+        <h2 className="f1">RoboFriends</h2>
         <SearchBox searchChange={this.onSearchChange} />
         <CardList robots={filteredRobots} />
       </div>
