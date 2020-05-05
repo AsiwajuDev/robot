@@ -5,18 +5,28 @@ import SearchBox from "./components/searchBox/SearchBox";
 
 import { robots } from "./data/robot";
 
-const state = {
-  robots: robots,
-  searchField: "",
-};
-
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { robots: robots, searchField: "" };
+  }
+
+  onSearchChange = (event) => {
+    this.setState({ searchField: event.target.value });
+  };
+
   render() {
+    const filteredRobots = this.state.robots.filter((robots) => {
+      return robots.name
+        .toLowerCase()
+        .includes(this.state.searchField.toLowerCase());
+    });
+
     return (
       <div className="tc">
         <h2>RoboFriends</h2>
-        <SearchBox />
-        <CardList robots={robots} />
+        <SearchBox searchChange={this.onSearchChange} />
+        <CardList robots={filteredRobots} />
       </div>
     );
   }
